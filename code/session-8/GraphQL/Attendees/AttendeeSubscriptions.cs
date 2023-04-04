@@ -25,7 +25,7 @@ namespace ConferencePlanner.GraphQL.Attendees
             int sessionId,
             [Service] ITopicEventReceiver eventReceiver,
             CancellationToken cancellationToken) =>
-            await eventReceiver.SubscribeAsync<string, int>(
+            await eventReceiver.SubscribeAsync<int>(
                 "OnAttendeeCheckedIn_" + sessionId, cancellationToken);
     }
 }

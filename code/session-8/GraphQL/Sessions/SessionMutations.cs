@@ -11,10 +11,9 @@ namespace ConferencePlanner.GraphQL.Sessions
     [ExtendObjectType(Name = "Mutation")]
     public class SessionMutations
     {
-        [UseApplicationDbContext]
         public async Task<AddSessionPayload> AddSessionAsync(
             AddSessionInput input,
-            [ScopedService] ApplicationDbContext context,
+            ApplicationDbContext context,
             CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(input.Title))
@@ -49,10 +48,9 @@ namespace ConferencePlanner.GraphQL.Sessions
             return new AddSessionPayload(session);
         }
 
-        [UseApplicationDbContext]
         public async Task<ScheduleSessionPayload> ScheduleSessionAsync(
             ScheduleSessionInput input,
-            [ScopedService] ApplicationDbContext context,
+            ApplicationDbContext context,
             [Service]ITopicEventSender eventSender)
         {
             if (input.EndTime < input.StartTime)

@@ -13,10 +13,9 @@ namespace ConferencePlanner.GraphQL.Attendees
     [ExtendObjectType(Name = "Query")]
     public class AttendeeQueries
     {
-        [UseApplicationDbContext]
         [UsePaging]
         public IQueryable<Attendee> GetAttendees(
-            [ScopedService] ApplicationDbContext context) =>
+            ApplicationDbContext context) =>
             context.Attendees;
 
         public Task<Attendee> GetAttendeeByIdAsync(

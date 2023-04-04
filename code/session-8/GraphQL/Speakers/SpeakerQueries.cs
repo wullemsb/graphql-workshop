@@ -14,10 +14,9 @@ namespace ConferencePlanner.GraphQL.Speakers
     [ExtendObjectType(Name = "Query")]
     public class SpeakerQueries
     {
-        [UseApplicationDbContext]
         [UsePaging]
         public IQueryable<Speaker> GetSpeakers(
-            [ScopedService] ApplicationDbContext context) =>
+            ApplicationDbContext context) =>
             context.Speakers.OrderBy(t => t.Name);
 
         public Task<Speaker> GetSpeakerByIdAsync(

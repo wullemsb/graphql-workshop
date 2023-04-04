@@ -10,6 +10,7 @@ using ConferencePlanner.GraphQL.Sessions;
 using ConferencePlanner.GraphQL.Speakers;
 using ConferencePlanner.GraphQL.Tracks;
 using ConferencePlanner.GraphQL.Types;
+using HotChocolate.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +31,8 @@ namespace ConferencePlanner.GraphQL
 
             services
                 .AddGraphQLServer()
+            //https://chillicream.com/docs/hotchocolate/v13/integrations/entity-framework/#working-with-a-pooled-dbcontext
+                .RegisterDbContext<ApplicationDbContext>(DbContextKind.Pooled)
                 .AddQueryType(d => d.Name("Query"))
                     .AddTypeExtension<AttendeeQueries>()
                     .AddTypeExtension<SpeakerQueries>()
@@ -47,7 +50,8 @@ namespace ConferencePlanner.GraphQL
                 .AddType<SessionType>()
                 .AddType<SpeakerType>()
                 .AddType<TrackType>()
-                .EnableRelaySupport()
+                .AddGlobalObjectIdentification()
+                .AddQueryFieldToMutationPayloads()
                 .AddFiltering()
                 .AddSorting()
                 .AddInMemorySubscriptions()
