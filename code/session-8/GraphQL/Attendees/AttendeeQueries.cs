@@ -10,7 +10,7 @@ using HotChocolate.Types.Relay;
 
 namespace ConferencePlanner.GraphQL.Attendees
 {
-    [ExtendObjectType(Name = "Query")]
+    [ExtendObjectType(HotChocolate.Language.OperationType.Query)]
     public class AttendeeQueries
     {
         [UsePaging]

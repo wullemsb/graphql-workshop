@@ -11,9 +11,9 @@ using System.Linq;
 
 namespace ConferencePlanner.GraphQL.Speakers
 {
-    [ExtendObjectType(Name = "Query")]
+    [ExtendObjectType(HotChocolate.Language.OperationType.Query)]
     public class SpeakerQueries
-    {
+    {   
         [UsePaging]
         public IQueryable<Speaker> GetSpeakers(
             ApplicationDbContext context) =>

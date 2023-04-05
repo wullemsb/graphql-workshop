@@ -6,7 +6,7 @@ using HotChocolate.Types;
 
 namespace ConferencePlanner.GraphQL.Tracks
 {
-    [ExtendObjectType(Name = "Mutation")]
+    [ExtendObjectType(HotChocolate.Language.OperationType.Mutation)]
     public class TrackMutations
     {
         public async Task<AddTrackPayload> AddTrackAsync(

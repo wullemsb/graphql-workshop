@@ -13,7 +13,7 @@ using HotChocolate.Data;
 
 namespace ConferencePlanner.GraphQL.Sessions
 {
-    [ExtendObjectType(Name = "Query")]
+    [ExtendObjectType(HotChocolate.Language.OperationType.Query)]
     public class SessionQueries
     {
         [UsePaging(typeof(NonNullType<SessionType>))]

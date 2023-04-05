@@ -5,7 +5,7 @@ using HotChocolate.Types;
 
 namespace ConferencePlanner.GraphQL.Speakers
 {
-    [ExtendObjectType(Name = "Mutation")]
+    [ExtendObjectType(HotChocolate.Language.OperationType.Mutation)]
     public class SpeakerMutations
     {
         public async Task<AddSpeakerPayload> AddSpeakerAsync(

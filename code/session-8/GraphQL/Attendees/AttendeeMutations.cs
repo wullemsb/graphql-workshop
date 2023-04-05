@@ -9,7 +9,7 @@ using HotChocolate.Subscriptions;
 
 namespace ConferencePlanner.GraphQL.Attendees
 {
-    [ExtendObjectType(Name = "Mutation")]
+    [ExtendObjectType(HotChocolate.Language.OperationType.Mutation)]
     public class AttendeeMutations
     {
         public async Task<RegisterAttendeePayload> RegisterAttendeeAsync(

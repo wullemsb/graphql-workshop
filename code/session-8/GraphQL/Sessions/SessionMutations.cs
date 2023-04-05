@@ -8,7 +8,7 @@ using HotChocolate.Types;
 
 namespace ConferencePlanner.GraphQL.Sessions
 {
-    [ExtendObjectType(Name = "Mutation")]
+    [ExtendObjectType(HotChocolate.Language.OperationType.Mutation)]
     public class SessionMutations
     {
         public async Task<AddSessionPayload> AddSessionAsync(
