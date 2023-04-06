@@ -36,7 +36,7 @@ namespace ConferencePlanner.GraphQL.Types
         private class TrackResolvers
         {
             public async Task<IEnumerable<Session>> GetSessionsAsync(
-                Track track,
+                [Parent] Track track,
                 ApplicationDbContext dbContext,
                 SessionByIdDataLoader sessionById,
                 CancellationToken cancellationToken)

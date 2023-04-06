@@ -35,7 +35,8 @@ namespace GraphQL.Tests
                 .AddType<SessionType>()
                 .AddType<SpeakerType>()
                 .AddType<TrackType>()
-                .EnableRelaySupport()
+                .AddGlobalObjectIdentification()
+                .AddQueryFieldToMutationPayloads()
                 .BuildSchemaAsync();
 
             // assert
@@ -58,7 +59,8 @@ namespace GraphQL.Tests
                .AddType<SessionType>()
                .AddType<SpeakerType>()
                .AddType<TrackType>()
-               .EnableRelaySupport()
+               .AddGlobalObjectIdentification()
+               .AddQueryFieldToMutationPayloads()
                .BuildRequestExecutorAsync();
 
             // act
