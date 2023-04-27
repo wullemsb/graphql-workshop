@@ -5,6 +5,7 @@ using ConferencePlanner.GraphQL.Data;
 using HotChocolate;
 using HotChocolate.Subscriptions;
 using HotChocolate.Types;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConferencePlanner.GraphQL.Sessions
 {
@@ -59,14 +60,15 @@ namespace ConferencePlanner.GraphQL.Sessions
                     new UserError("endTime has to be larger than startTime.", "END_TIME_INVALID"));
             }
 
-            Session session = await context.Sessions.FindAsync(input.SessionId);
-            int? initialTrackId = session.TrackId;
-
+            Session? session = await context.Sessions.FindAsync(input.SessionId);
+           
             if (session is null)
             {
                 return new ScheduleSessionPayload(
                     new UserError("Session not found.", "SESSION_NOT_FOUND"));
             }
+
+            int? initialTrackId = session.TrackId;
 
             session.TrackId = input.TrackId;
             session.StartTime = input.StartTime;

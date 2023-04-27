@@ -23,7 +23,6 @@ namespace ConferencePlanner.GraphQL.Types
             descriptor
                 .Field(t => t.SessionsAttendees)
                 .ResolveWith<AttendeeResolvers>(t => t.GetSessionsAsync(default!, default!, default!, default))
-                //.UseDbContext<ApplicationDbContext>()
                 .Name("sessions");
         }
 

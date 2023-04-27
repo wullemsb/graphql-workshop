@@ -11,6 +11,11 @@ namespace ConferencePlanner.GraphQL.Tracks
         {
         }
 
+        public RenameTrackPayload(UserError error)
+            : base(new[] { error })
+        {
+        }
+
         public RenameTrackPayload(IReadOnlyList<UserError> errors) 
             : base(errors)
         {
